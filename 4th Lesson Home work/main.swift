@@ -124,17 +124,14 @@ for phrase in phrase {
 
 
     //Калькулятор
-
-
-
-import Foundation
+//Добавить в ваш калькулятор функции нахождения cos, sin, tg, ctg,(по углу) и %
 
 print("Функции для калькулятора")
 
 print("Введите первое число")
 var num1 = readLine()!
                
-print("Какое действие с ним совершить?\nНапишите один из вариантов: \n+, -, *, /\n")
+print("Какое действие с ним совершить?\nНапишите один из вариантов: \n+, -, *, /\nили sin, cos, tan, cot")
 
 let sign = readLine()!
 
@@ -142,7 +139,13 @@ print("Введите второе число")
 
 var num2 = readLine()!
 
-               
+ let sinD = (Double(num2)! * 4 * (180 - Double(num2)!)) / (40500 - Double(num2)! * (180 - Double(num2)!))
+let cosD = ((90 - (Double(num2)!)) * 4 * (180 - (90 - Double(num2)!))) / (40500 - (90 - Double(num2)!) * (180 - (90 - Double(num2)!)))
+let tanD = sinD / cosD
+let cotD = cosD / sinD
+
+calculator(num1: Double(num1)!, sign: sign, num2: Double(num2)!)
+
 func calculator(num1: Double, sign: String, num2: Double) {
     if sign == "+" {
         print(num1, "+", num2, "=", num1 + num2)
@@ -154,12 +157,20 @@ func calculator(num1: Double, sign: String, num2: Double) {
         
     }else if sign == "/"{
         print(num1, "/", num2, "=", num1 / num2)
+        
+    }else if sign == "sin" {
+        print(num1, "* sin", num2, "=", sinD * num1)
+    }
+    else if sign == "cos" {
+        print(num1, "* cos", num2, "=", cosD * num1)
+    }
+    else if sign == "tan" {
+        print(num1, "* tan", num2, "=", tanD * num1)
+    }
+    else if sign == "cot" {
+        print(num1, "* cot", num2, "=", cotD * num1)
     }
     else {
-        print("Неверно. Выберите символ из списка (+ - * /)")
+        print("Неверно. Выберите символ из списка (+ - * / или sin, cos, tan, cot)")
     }
 }
-
-calculator(num1: Double(num1)!, sign: sign, num2: Double(num2)!)
-
-
